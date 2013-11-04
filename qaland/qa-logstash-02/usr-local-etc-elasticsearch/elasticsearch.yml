@@ -1,0 +1,14 @@
+cluster.name: logstash
+node.name: "qa-logstash-02"
+index.translog.flush_threshold_ops: 50000
+indices.memory.index_buffer_size: 50%
+path.conf: /usr/local/etc/elasticsearch
+path.data: /esdb
+path.work: /var/tmp/elasticsearch
+path.logs: /var/log/elasticsearch
+path.plugins: /usr/local/lib/elasticsearch/plugins
+cluster.routing.allocation.node_initial_primaries_recoveries: 8
+cluster.routing.allocation.node_concurrent_recoveries: 8
+indices.recovery.concurrent_streams: 10
+discovery.zen.ping.unicast.hosts: ["10.10.20.42[9300-9400]", "10.10.20.68[9300-9400]", "10.10.20.86[9300-9400]"]
+index.mapping.ignore_malformed: true
