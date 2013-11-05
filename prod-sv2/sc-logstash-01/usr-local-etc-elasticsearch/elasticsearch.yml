@@ -1,0 +1,12 @@
+cluster.name: logstash
+node.name: "sc-logstash-01"
+path.conf: /usr/local/etc/elasticsearch
+path.data: /var/db/elasticsearch
+path.work: /var/tmp/elasticsearch
+path.logs: /var/log/elasticsearch
+path.plugins: /usr/local/lib/elasticsearch/plugins
+cluster.routing.allocation.node_initial_primaries_recoveries: 8
+cluster.routing.allocation.node_concurrent_recoveries: 8
+indices.recovery.concurrent_streams: 10
+discovery.zen.ping.unicast.hosts: ["10.20.23.64[9300-9400]", "10.20.23.65[9300-9400]"]
+index.mapping.ignore_malformed: true

@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# $FreeBSD: databases/redis/files/redis.in 306622 2012-10-29 16:44:40Z osa $
+#
+
+# PROVIDE: redis
+# REQUIRE: LOGIN
+# BEFORE:  securelevel
+# KEYWORD: shutdown
+
+# Add the following line to /etc/rc.conf to enable `redis':
+#
+#redis_enable="YES"
+#
+
+. /etc/rc.subr
+
+name="redis"
+rcvar=redis_enable
+
+extra_commands="reload"
+
+command="/usr/local/bin/redis-server"
+config_file="/usr/local/etc/$name.conf"
+command_args="${config_file}"
+pidfile="/var/run/redis/$name.pid"
+required_files="${config_file}"
+
+# read configuration and set defaults
+load_rc_config "$name"
+: ${redis_enable="NO"}
+: ${redis_user="redis"}
+
+run_rc_command "$1"
